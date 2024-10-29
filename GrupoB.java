@@ -4,9 +4,7 @@ public class GrupoB {
         Main.swapCount = 0;
         Main.iterationCount = 0;
         mergeSort(vetor, new int[vetor.length], 0, vetor.length - 1);
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.println(vetor[i]);
-        }
+        
     }
 
     private static void mergeSort(int[] vetor, int[] auxiliar, int inicio, int fim) {
