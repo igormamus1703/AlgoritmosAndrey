@@ -1,60 +1,61 @@
 import java.util.Random;
 
 public class GrupoA {
-    public static void insertionSort(int[] array) {
+    public static void insertionSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
-            int j = i - 1;
-            while (j >= 0 && array[j] > key) {
+        int aux, j;
+        for (int i = 1; i < vetor.length; i++) {
+            aux = vetor[i];
+            j = i - 1;
+            while (j >= 0 && vetor[j] > aux) {
                 Main.iterationCount++;
-                array[j + 1] = array[j];
+                vetor[j + 1] = vetor[j];
+                j--;
                 Main.swapCount++;
-                j = j - 1;
             }
-            array[j + 1] = key;
+            vetor[j + 1] = aux;
         }
     }
 
     // Selection Sort
-    public static void selectionSort(int[] array) {
+    public static void selectionSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < vetor.length - 1; i++) {
             int minIndex = i;
-            for (int j = i + 1; j < array.length; j++) {
+            for (int j = i + 1; j < vetor.length; j++) {
                 Main.iterationCount++;
-                if (array[j] < array[minIndex]) {
+                if (vetor[j] < vetor[minIndex]) {
                     minIndex = j;
                 }
             }
             if (minIndex != i) {
                 Main.swapCount++;
-                int temp = array[i];
-                array[i] = array[minIndex];
-                array[minIndex] = temp;
+                int temp = vetor[i];
+                vetor[i] = vetor[minIndex];
+                vetor[minIndex] = temp;
             }
         }
     }
 
     
     // Função Bogo Sort
-       public static void bogoSort(int[] array) {
+       public static void bogoSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
         
         // Continua até o array estar ordenado
-        while (!isSorted(array)) {
-            shuffle(array);
+        while (!isSorted( vetor)) {
+            shuffle(vetor);
             Main.iterationCount++;  // Contagem de iterações a cada embaralhamento
         }
     }
 
     // Verifica se o array está ordenado
-    private static boolean isSorted(int[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
+    private static boolean isSorted(int[] vetor) {
+        for (int i = 0; i < vetor.length - 1; i++) {
+            if (vetor[i] > vetor[i + 1]) {
                 return false;
             }
         }
@@ -62,13 +63,13 @@ public class GrupoA {
     }
 
     // Embaralha o array aleatoriamente
-    private static void shuffle(int[] array) {
+    private static void shuffle(int[] vetor) {
         Random random = new Random();
-        for (int i = 0; i < array.length; i++) {
-            int randomIndex = random.nextInt(array.length);
-            int temp = array[i];
-            array[i] = array[randomIndex];
-            array[randomIndex] = temp;
+        for (int i = 0; i < vetor.length; i++) {
+            int randomIndex = random.nextInt(vetor.length);
+            int temp = vetor[i];
+            vetor[i] = vetor[randomIndex];
+            vetor[randomIndex] = temp;
             Main.swapCount++;  // Contagem de trocas
         }
     }

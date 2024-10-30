@@ -17,9 +17,9 @@ public class Main {
     }
 
     // Função para medir o tempo de execução de um algoritmo de ordenação
-    public static long measureTime(Runnable sortMethod) {
+    public static long measureTime(Runnable metodoSort) {
         long startTime = System.nanoTime();
-        sortMethod.run();
+        metodoSort.run();
         long endTime = System.nanoTime();
         return endTime - startTime;
     }

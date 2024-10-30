@@ -47,51 +47,65 @@ public class GrupoB {
     }
 
     // Quick Sort
-    public static void quickSort(int[] array, int low, int high) {
-        if (low < high) {
-            int pi = partition(array, low, high);
-            quickSort(array, low, pi - 1);
-            quickSort(array, pi + 1, high);
+    public static void quickSort(int[] vetor, int esquerda, int direita) {
+        if (esquerda < direita) {
+            int p = particao(vetor, esquerda, direita);
+            quickSort(vetor, esquerda, p);
+            quickSort(vetor, p + 1, direita);
         }
+
+     
     }
 
-    private static int partition(int[] array, int low, int high) {
-        int pivot = array[high];
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            Main.iterationCount++;
-            if (array[j] < pivot) {
+    private static int particao(int[] vetor, int esquerda, int direita) {
+        int meio = (int) (esquerda + direita) / 2;
+        int pivot = vetor[meio];
+        int i = (esquerda - 1);
+        int j= (direita + 1);
+        while (true) {
+            do {
                 i++;
-                Main.swapCount++;
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                Main.iterationCount++;
+            } while (vetor[i] < pivot);
+            do {
+                j--;
+                Main.iterationCount++;
+            } while (vetor[j] > pivot);
+            if (i >= j) {
+                return j;
             }
+            int temp = vetor[i];
+            vetor[i] = vetor[j];
+            vetor[j] = temp;
+            Main.swapCount++;
         }
-        Main.swapCount++;
-        int temp = array[i + 1];
-        array[i + 1] = array[high];
-        array[high] = temp;
-        return i + 1;
     }
 
     // Shell Sort
-    public static void shellSort(int[] array) {
+    public static void shellSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
-        int gap = array.length / 2;
-        while (gap > 0) {
-            for (int i = gap; i < array.length; i++) {
-                int temp = array[i];
-                int j;
-                for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
-                    array[j] = array[j - gap];
-                    Main.iterationCount++;
+        int h = 1;
+        int n = vetor.length;
+        while (h < n ) {
+            h = h * 3 +1; 
+        }
+        h = (int) Math.floor(h/3);
+
+        int elemento,j;
+        while(h > 0 ){
+            for(int i = h; i < n; i++){
+                elemento = vetor[i];
+                j = i;
+                Main.iterationCount++;
+                while(j >= h && vetor[j-h] > elemento){
+                    vetor[j] = vetor[j-h];
+                    j = j - h;
                     Main.swapCount++;
                 }
-                array[j] = temp;
+                vetor[j] = elemento;
             }
-            gap /= 2;
+            h = h/2;
         }
     }
 }
