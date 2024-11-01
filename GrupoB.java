@@ -3,7 +3,8 @@ public class GrupoB {
     public static void mergeSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
-        mergeSort(vetor, new int[vetor.length], 0, vetor.length - 1);
+        int tamanho = Main.arrayLength(vetor);
+        mergeSort(vetor, new int[tamanho], 0, vetor.length - 1);
         
     }
 
@@ -86,7 +87,7 @@ public class GrupoB {
         Main.swapCount = 0;
         Main.iterationCount = 0;
         int h = 1;
-        int n = vetor.length;
+        int n = Main.arrayLength(vetor);
         while (h < n ) {
             h = h * 3 +1; 
         }

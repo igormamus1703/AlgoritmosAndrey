@@ -5,7 +5,8 @@ public class GrupoA {
         Main.swapCount = 0;
         Main.iterationCount = 0;
         int aux, j;
-        for (int i = 1; i < vetor.length; i++) {
+        int tamanho = Main.arrayLength(vetor);
+        for (int i = 1; i < tamanho; i++) {
             aux = vetor[i];
             j = i - 1;
             while (j >= 0 && vetor[j] > aux) {
@@ -22,9 +23,10 @@ public class GrupoA {
     public static void selectionSort(int[] vetor) {
         Main.swapCount = 0;
         Main.iterationCount = 0;
-        for (int i = 0; i < vetor.length - 1; i++) {
+        int tamanho = Main.arrayLength(vetor);
+        for (int i = 0; i <tamanho - 1; i++) {
             int minIndex = i;
-            for (int j = i + 1; j < vetor.length; j++) {
+            for (int j = i + 1; j < tamanho; j++) {
                 Main.iterationCount++;
                 if (vetor[j] < vetor[minIndex]) {
                     minIndex = j;
@@ -54,7 +56,8 @@ public class GrupoA {
 
     // Verifica se o array está ordenado
     private static boolean isSorted(int[] vetor) {
-        for (int i = 0; i < vetor.length - 1; i++) {
+        int tamanho = Main.arrayLength(vetor);
+        for (int i = 0; i <tamanho - 1; i++) {
             if (vetor[i] > vetor[i + 1]) {
                 return false;
             }
@@ -65,8 +68,9 @@ public class GrupoA {
     // Embaralha o array aleatoriamente
     private static void shuffle(int[] vetor) {
         Random random = new Random();
-        for (int i = 0; i < vetor.length; i++) {
-            int randomIndex = random.nextInt(vetor.length);
+        int tamanho = Main.arrayLength(vetor);
+        for (int i = 0; i <tamanho; i++) {
+            int randomIndex = random.nextInt(tamanho);
             int temp = vetor[i];
             vetor[i] = vetor[randomIndex];
             vetor[randomIndex] = temp;

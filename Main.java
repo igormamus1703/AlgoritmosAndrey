@@ -24,8 +24,21 @@ public class Main {
         return endTime - startTime;
     }
 
+    public static int arrayLength(int[] array) {
+        int count = 0;
+        try {
+            while (true) {
+                int temp = array[count];
+                count++;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // Fim do array
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
-        int[] tamanhos = {10};
+        int[] tamanhos = {1000, 10000, 100000, 500000, 1000000};
         int runs = 5;
         long seed = 12345;
 
@@ -49,8 +62,8 @@ public class Main {
                 System.out.println("Selection Sort - Tempo: " + timeSelectionSort + " ns, Trocas: " + swapCount + ", Iterações: " + iterationCount);
 
                 
-                long timeCombSort = measureTime(() -> GrupoA.bogoSort(vetor.clone()));
-                System.out.println("Comb Sort - Tempo: " + timeCombSort + " ns, Trocas: " + swapCount + ", Iterações: " + iterationCount);
+              //  long timeCombSort = measureTime(() -> GrupoA.bogoSort(vetor.clone()));
+               // System.out.println("Comb Sort - Tempo: " + timeCombSort + " ns, Trocas: " + swapCount + ", Iterações: " + iterationCount);
 
                 // Testes para os algoritmos do Grupo B
                 

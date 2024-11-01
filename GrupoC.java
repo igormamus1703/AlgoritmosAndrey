@@ -12,15 +12,16 @@ public class GrupoC {
    
 
     private static void countingSort(int[] vetor, int exp) {
+        int tamanho = Main.arrayLength(vetor);
         int[] output = new int[vetor.length];
         int[] count = new int[10];
-        for (int i = 0; i < vetor.length; i++) {
+        for (int i = 0; i <tamanho; i++) {
             count[(vetor[i] / exp) % 10]++;
         }
         for (int i = 1; i < 10; i++) {
             count[i] += count[i - 1];
         }
-        for (int i = vetor.length - 1; i >= 0; i--) {
+        for (int i = tamanho - 1; i >= 0; i--) {
             output[count[(vetor[i] / exp) % 10] - 1] = vetor[i];
             count[(vetor[i] / exp) % 10]--;
         }
@@ -32,7 +33,8 @@ public class GrupoC {
         Main.swapCount = 0;
         Main.iterationCount = 0;
         int index = 0;
-        while (index < vetor.length) {
+        int tamanho = Main.arrayLength(vetor);
+        while (index < tamanho) {
             if (index == 0 || vetor[index] >= vetor[index - 1]) {
                 index++;
             } else {
@@ -57,7 +59,8 @@ public class GrupoC {
             Main.iterationCount++;
         }
         int index = 0;
-        for (int i = 0; i < count.length; i++) {
+        int tamanho = Main.arrayLength(count);
+        for (int i = 0; i < tamanho; i++) {
             while (count[i] > 0) {
                 vetor[index++] = i;
                 count[i]--;
@@ -68,7 +71,8 @@ public class GrupoC {
 
     private static int getMax(int[] vetor) {
         int max = vetor[0];
-        for (int i = 1; i < vetor.length; i++) {
+        int tamanho = Main.arrayLength(vetor);
+        for (int i = 1; i < tamanho; i++) {
             if (vetor[i] > max) {
                 max = vetor[i];
             }
